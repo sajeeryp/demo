@@ -1,5 +1,10 @@
+import 'package:demo/screens/project_loan.dart';
 import 'package:demo/widgets/custom_button.dart';
+import 'package:demo/widgets/popbutton.dart';
 import 'package:flutter/material.dart';
+
+import 'loan_details.dart';
+import 'mudra_search.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -32,6 +37,7 @@ class _HomescreenState extends State<Homescreen> {
         ),
       ),
       bottomNavigationBar: Container(
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
@@ -103,7 +109,15 @@ class _HomescreenState extends State<Homescreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Custombutton(
-                    ontap: () {},
+                    ontap: () {
+                      // bottomsheet(context);
+                      // {},
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            _buildPopupDialog(context),
+                      );
+                    },
                     title: 'Project Loan',
                   ),
                   Custombutton(
@@ -158,6 +172,47 @@ class _HomescreenState extends State<Homescreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void bottomsheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container();
+        });
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      backgroundColor: Colors.grey.shade500,
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Popupbutton(
+            popontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Mudrasearch()));
+            },
+            poptitle: 'Mudra Loan',
+          ),
+          Popupbutton(
+            popontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Loandetails()));
+            },
+            poptitle: 'Nora Loan',
+          ),
+          Popupbutton(
+            popontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Projectloan()));
+            },
+            poptitle: 'Lorem Iorem ipsum',
+          ),
+        ],
       ),
     );
   }
