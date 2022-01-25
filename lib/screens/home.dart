@@ -68,7 +68,7 @@ class _HomescreenState extends State<Homescreen> {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(9),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.all(
@@ -76,6 +76,7 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
                 //color: Colors.blueGrey.shade100,
+
                 height: 140,
                 width: 500,
                 child: Align(
